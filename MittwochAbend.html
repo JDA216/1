@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MittwochAbend</title>
+    <style>
+      h2 {
+        color: rgb(229, 170, 102);
+      }
+
+      body {
+        background-color: rgb(144, 65, 255);
+        display: block;
+        text-align: center;
+        position: relative;
+      }
+
+      button {
+        background-color: rgb(229, 170, 102);
+        padding: 0.3em;
+        margin: 0.5%;
+      }
+
+      .NewGame{
+        background-color: rgb(57, 54, 54);
+        position: relative;
+        color: white;
+        border-style: dashed solid;
+        padding: .5em;
+        margin-left: 40%;
+        margin-right: 40%;
+
+    
+      }
+      .Callout {
+        color: rgb(229, 170, 102);
+      }
+
+      .boxInvisible {
+        color: rgb(229, 170, 102);
+        text-align: center;
+        position: absolute;
+        top: 39.7%;
+        right: 45%;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h2>Übungsaufgabe</h2>
+    <h3>Intelligenztest</h3>
+    <p id="question"></p>
+    <p class="Callout" id="result"></p>
+    <div id="response">
+      Wählen Sie jetzt
+    </div>
+    <div>
+      <h4 class="boxInvisible" id="AnswerSymbol"> </h4>
+    </div>
+    <div class="NewGame" onclick="window.location.reload()">Start New Game</div>
+    <script>
+      // Neue Frage durch Neuladen der Website
+
+      window.onload = function(){
+        const array4 = [
+        
+       { 
+        text: "Wer begründete die Relativitätstheorie?",
+        options: ["Newton", "Einstein", "Galilei"],
+        answer: "Einstein"
+       },
+            // Objektzuweisung durch geschwungene Klammern, jede Klammer ein Objekt
+       {
+        text: "Wann war die französische Revolution?",
+        options: ["1784", "1789", "1794"],
+        answer: "1789"
+       },
+
+       {
+        text: "Wann war der Deutsche Mauerfall?",
+        options: ["1983", "1986", "1989"],
+        answer: "1989"
+       },
+
+       {
+        text: "Wann starb John F. Kennedy?",
+        options: ["1963", "1973", "1983"],
+        answer: "1973"
+       },
+
+       {
+        text: "Wann kam Hitler an die Macht?",
+        options: ["30.01.1933", "01.03.1933", "30.03.1933"],
+        answer: "30.01.1933"
+       },
+
+       {
+        text: "Welches Element ist kein Metall?",
+        options: ["Cs", "Al", "As"],
+        answer: "As"
+       },
+
+       {
+        text: "Wie viel wiegt ein Küken beim Schlüpfen?",
+        options: ["ca. 25g", "ca. 45g", "ca. 65g"],
+        answer: "ca. 45g"
+       },
+
+       {
+        text: "Wer entdeckte die Radioaktivität?",
+        options: ["Marie Curie und Henri Becquerel", "Marie Curie und Ernest Rutherford", "Henri Becquerel und Ernest Rutherford"],
+        answer: "Marie Curie und Henri Becquerel"
+       },
+
+       {
+        text: "Wer hat als erstes das Atom entdeckt?",
+        options: ["E. Rutherford", "N. Bohr", "J. Dalton"],
+        answer: "J. Dalton"
+       },
+
+       {
+        text: "Wer war der erste Präsident?",
+        options: ["Thomas Jefferson", "George Washington", "Abraham Lincoln"],
+        answer: "George Washington"
+       },
+
+       {
+        text: "Wie lang bestand das Römische Reich?",
+        options: ["ca. 300 v.Chr. - 700 n.Chr.", "ca. 500 v.Chr. - 500 n.Chr.", "ca. 800 v.Chr. - 200 n.Chr."],
+        answer: "ca. 500 v.Chr. - 500 n.Chr."
+       },
+
+       {
+        text: "Wann wurde der Vertrag von Maastricht unterzeichnet?",
+        options: ["07. Feb. 1992", "01. Nov. 1993", "24. Jan 1993"],
+        answer: "07. Feb 1992"
+       },
+
+       {
+        text: "Wann war der Dreißigjährige Krieg?",
+        options: ["1596 - 1626", "1618 - 1648", "1634 - 1664"],
+        answer: "1618 - 1648"
+       },
+
+       {
+        text: "Wann wurde das Internet erfunden?",
+        options: ["Jan. 1967", "Okt. 1969", "Jul 1971"],
+        answer: "Okt. 1969"
+       },
+
+       {
+        text: "Welche Frucht enthält am meisten Vitamin C?",
+        options: ["Zitrone", "Kiwi", "Acerola"],
+        answer: "Acerola"
+       },
+
+       {
+        text: "Wie groß wird ein Strauß?",
+        options: ["bis zu 180cm", "bis zu 230cm", "bis zu 280cm"],
+        answer: "bis zu 280cm"
+       },
+
+       {
+        text: "Wie groß ist 1 Zoll?",
+        options: ["2,54cm", "2,34cm", "2,14"],
+        answer: "2,54cm"
+       },
+
+       {
+        text: "Welches Land hat die kleinste Fläche?",
+        options: ["Monaco", "Vatikanstadt", "San Marino"],
+        answer: "Vatikanstadt"
+       },
+
+       {
+        text: "Welcher Ort liegt näher an Berlin?",
+        options: ["Rio De Janeiro", "Singapur", "Kapstadt"],
+        answer: "Kapstadt"
+       },
+
+       {
+        text: "Wie groß ist die Ostsee (mit Kattegat)?",
+        options: ["8490km³", "21630km³", "37550km³"],
+        answer: "21630km³"
+       },
+
+       {
+        text: "Wie alt wurde Elvis Presley?",
+        options: ["42 Jahre", "54 Jahre", "61 Jahre"],
+        answer: "42 Jahre"
+       },
+
+       {
+        text: "Welche Stadt liegt am südlichsten?",
+        options: ["Buenos Aires", "Madagaskar", "Melbourne"],
+        answer: "Melbourne"
+       },
+
+       {
+        text: "Wie lange braucht ein Lichtstrahl von der Sonne bis zur Erde",
+        options: ["ca. 8min", "ca. 22min", "ca. 40min"],
+        answer: "ca. 8min"
+       },
+
+       {
+        text: "Bei wie viel Grad Celsius liegt der Schmelzpunkt von Gold?",
+        options: ["1064 °C", "1627 °C", "2235 °C"],
+        answer: "1064 °C"
+       },
+
+       {
+        text: "Wie viele offiziellen Länder gibt es aktuell?",
+        options: ["187", "191", "195"],
+        answer: "195"
+       },
+
+       {
+        text: "Welche Stadt hat die größte Einwohnerzahl?",
+        options: ["Mumbai", "Delhi", "Tokio"],
+        answer: "Tokio"
+       },
+
+       {
+        text: "Was ist in Deutschland die häufigste Blutgruppe?",
+        options: ["A+", "B-", "0-"],
+        answer: "A+"
+       },
+
+       {
+        text: "Wie schwer kann ein Elch werden?",
+        options: ["bis zu 450kg", "bis zu 700kg", "bis zu 920kg"],
+        answer: "bis zu 700kg"
+       }
+
+
+      ];
+
+       const randomIndex = Math.floor(Math.random() * array4.length);
+
+       // Funktion für Zufallszahl, hier: Zufallsfrage/Objekt
+
+       const question = array4[randomIndex];
+
+       // Zuweisung von id(question) an array4
+
+
+      document.getElementById("question").innerHTML=question.text;
+      
+       // Auswahl einer Frage des Arrays und Wiedergabe des Textes
+
+
+      for (let i=0; i<question.options.length; i++){
+        const button = document.createElement ("button");
+        button.innerHTML = question.options[i];
+        button.addEventListener("click", function(){
+          if (question.options[i] === question.answer){
+            document.getElementById("result").innerHTML = "Richtig!";
+            console.log("Richtig!");
+            document.getElementById("AnswerSymbol").innerHTML = ":)"
+
+          }
+          else {
+            document.getElementById("result").innerHTML = "Falsch!";
+            console.log("Falsch!")
+            document.getElementById("AnswerSymbol").innerHTML = ":("
+          }
+        })
+        document.body.appendChild(button);
+
+        
+
+
+      
+        
+        
+      }
+
+       // Erstellen von options-Buttons anhand der optionssmöglichkeiten (optionss.length)
+       // Button-Text ist innerHTML (hier:Text) von jeweiligen optionss des Arrays
+       // Button soll Kindelement sein 
+
+      };
+      
+
+// WÜrfel soll 2sec zufallszahlen zeigen, nach 2sec hält er an und zeigt eine Zahl zw 1 und 6
+// starten soll der würfel bein anklicken
+// danach von vorne
+// hilfreiche Funktionen : setTimeout() ; setInterval() ;
+// mehr Lust: 2 Würfel, nach 2sec wieder zum stehen , welcher der beiden Würfel hat gewonnen
+// Ausgabe gewinner und bei mehr Lust: Highscore berechnen  
+        
+        
+      
+    </script>
+  
+ 
+</body>
+</html>
+
+
+
